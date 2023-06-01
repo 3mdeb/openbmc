@@ -1,0 +1,12 @@
+[Unit]
+Description=Start Host
+Conflicts=obmc-chassis-poweroff@0.target
+
+[Service]
+RemainAfterExit=yes
+Type=oneshot
+ExecStart=/usr/bin/env poweron.sh
+SyslogIdentifier=poweron.sh
+
+[Install]
+WantedBy=obmc-chassis-poweron@0.target

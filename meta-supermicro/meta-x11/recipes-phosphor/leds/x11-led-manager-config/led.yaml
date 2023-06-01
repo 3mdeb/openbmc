@@ -1,0 +1,19 @@
+BmcBooted:
+    heartbeat:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 0
+EnclosureIdentify:
+    uid:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+LampTest:
+    heartbeat:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+    uid:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
