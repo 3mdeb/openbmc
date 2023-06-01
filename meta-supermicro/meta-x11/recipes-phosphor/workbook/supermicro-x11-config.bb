@@ -5,7 +5,6 @@ PR = "r1"
 inherit allarch
 inherit setuptools
 inherit pythonnative
-inherit obmc-phosphor-license
 
 PROVIDES += "virtual/obmc-inventory-data"
 RPROVIDES_${PN} += "virtual-obmc-inventory-data"
