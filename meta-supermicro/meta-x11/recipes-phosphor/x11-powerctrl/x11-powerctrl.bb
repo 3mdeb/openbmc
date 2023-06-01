@@ -2,7 +2,6 @@
 FILESEXTRAPATHS:append := "${THISDIR}/files:"
 
 inherit systemd
-inherit obmc-phosphor-license
 inherit obmc-phosphor-systemd
 
 S = "${WORKDIR}/"
