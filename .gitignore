@@ -2,3 +2,8 @@ build*/*
 customrc
 *.sw?
 .repo/
+
+# Devenv
+.devenv*
+devenv.local.nix
+
