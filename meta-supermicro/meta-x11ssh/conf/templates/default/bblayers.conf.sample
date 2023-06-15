@@ -15,7 +15,7 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-phosphor \
   ##OEROOT##/meta-aspeed \
   ##OEROOT##/meta-supermicro \
-  ##OEROOT##/meta-supermicro/meta-x11 \
+  ##OEROOT##/meta-supermicro/meta-x11ssh \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta \
@@ -27,5 +27,5 @@ BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta-phosphor \
   ##OEROOT##/meta-aspeed \
   ##OEROOT##/meta-supermicro \
-  ##OEROOT##/meta-supermicro/meta-x11 \
+  ##OEROOT##/meta-supermicro/meta-x11ssh \
   "
