@@ -5,13 +5,13 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Apache-2.0;md5
 PR = "r1"
 
 inherit allarch
-inherit setuptools
-inherit pythonnative
+inherit setuptools3
+inherit python3native
 
 PROVIDES += "virtual/obmc-inventory-data"
 RPROVIDES_${PN} += "virtual-obmc-inventory-data"
 
-DEPENDS += "python"
+DEPENDS += "python3"
 
 S = "${WORKDIR}"
 SRC_URI += "file://supermicro-x11ssh.py"
