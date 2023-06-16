@@ -1,7 +1,7 @@
 SUMMARY = "Supermicro X11SSH board wiring"
 DESCRIPTION = "Board wiring information for the Supermicro X11SSH system."
 LICENSE = "Apache-2.0"
-LIC_FILES_CHKSUM = "file://${PHOSPHORBASE}/COPYING.apache-2.0;md5=34400b68072d710fecd0a2940a0d1658"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
 PR = "r1"
 
 inherit allarch
