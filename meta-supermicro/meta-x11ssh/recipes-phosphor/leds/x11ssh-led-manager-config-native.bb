@@ -11,7 +11,7 @@ SRC_URI += "file://led.yaml"
 
 # Overwrites the default led.yaml
 do_install() {
-    SRC=${WORKDIR}
+    SRC=${WORKDIR}/sources-unpack/
     DEST=${D}${datadir}/phosphor-led-manager
     install -D ${SRC}/led.yaml ${DEST}/led.yaml
 }
