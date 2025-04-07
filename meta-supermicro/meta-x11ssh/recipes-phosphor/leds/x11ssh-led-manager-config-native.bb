@@ -8,11 +8,10 @@ inherit native
 PROVIDES += "virtual/phosphor-led-manager-config-native"
 
 SRC_URI += "file://led.yaml"
-S = "${WORKDIR}"
 
 # Overwrites the default led.yaml
 do_install() {
-    SRC=${S}
+    SRC=${WORKDIR}
     DEST=${D}${datadir}/phosphor-led-manager
     install -D ${SRC}/led.yaml ${DEST}/led.yaml
 }
