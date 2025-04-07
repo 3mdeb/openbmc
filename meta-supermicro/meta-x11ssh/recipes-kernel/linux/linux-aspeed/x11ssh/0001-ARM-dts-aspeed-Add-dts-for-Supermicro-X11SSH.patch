@@ -1,36 +1,40 @@
-From 891e9cf085106972c519f3a8b1706ee8ddff5047 Mon Sep 17 00:00:00 2001
-From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Wed, 14 Jun 2023 22:27:46 +0200
+From eec818ccf16a153371e80882f9033cd68f46eacc Mon Sep 17 00:00:00 2001
+From: Mateusz Kusiak <mateusz.kusiak@3mdeb.com>
+Date: Mon, 7 Apr 2025 17:32:58 +0200
 Subject: [PATCH] ARM: dts: aspeed: Add dts for Supermicro X11SSH
+
+This commit adds dts file for Supermicro X11SSH platform.
 
 Based on the:
 https://github.com/Keno/openbmc-linux/commit/2443d1129e95943da1ba86768934489dca548321.patch
 
-Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+Upstream-Status: Inappropriate [testing]
+Signed-off-by: Mateusz Kusiak <mateusz.kusiak@3mdeb.com>
 ---
- arch/arm/boot/dts/Makefile                    |   1 +
- .../boot/dts/aspeed-bmc-supermicro-x11ssh.dts | 146 ++++++++++++++++++
- 2 files changed, 147 insertions(+)
- create mode 100644 arch/arm/boot/dts/aspeed-bmc-supermicro-x11ssh.dts
+ arch/arm/boot/dts/aspeed/Makefile             |   1 +
+ .../aspeed/aspeed-bmc-supermicro-x11ssh.dts   | 143 ++++++++++++++++++
+ 2 files changed, 144 insertions(+)
+ create mode 100644 arch/arm/boot/dts/aspeed/aspeed-bmc-supermicro-x11ssh.dts
 
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index eb681903d50b..50548a26bfb9 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -1629,6 +1629,7 @@ dtb-$(CONFIG_ARCH_ASPEED) += \
+diff --git a/arch/arm/boot/dts/aspeed/Makefile b/arch/arm/boot/dts/aspeed/Makefile
+index 220210c318fd..96e1abfba5b5 100644
+--- a/arch/arm/boot/dts/aspeed/Makefile
++++ b/arch/arm/boot/dts/aspeed/Makefile
+@@ -72,6 +72,7 @@ dtb-$(CONFIG_ARCH_ASPEED) += \
  	aspeed-bmc-quanta-q71l.dtb \
  	aspeed-bmc-quanta-s6q.dtb \
  	aspeed-bmc-supermicro-x11spi.dtb \
 +	aspeed-bmc-supermicro-x11ssh.dtb \
+ 	aspeed-bmc-inventec-starscream.dtb \
  	aspeed-bmc-inventec-transformers.dtb \
  	aspeed-bmc-tyan-s7106.dtb \
- 	aspeed-bmc-tyan-s8036.dtb \
-diff --git a/arch/arm/boot/dts/aspeed-bmc-supermicro-x11ssh.dts b/arch/arm/boot/dts/aspeed-bmc-supermicro-x11ssh.dts
+diff --git a/arch/arm/boot/dts/aspeed/aspeed-bmc-supermicro-x11ssh.dts b/arch/arm/boot/dts/aspeed/aspeed-bmc-supermicro-x11ssh.dts
 new file mode 100644
-index 000000000000..3242927a02e3
+index 000000000000..ce15f815b164
 --- /dev/null
-+++ b/arch/arm/boot/dts/aspeed-bmc-supermicro-x11ssh.dts
-@@ -0,0 +1,142 @@
++++ b/arch/arm/boot/dts/aspeed/aspeed-bmc-supermicro-x11ssh.dts
+@@ -0,0 +1,143 @@
++//Based on the: https://github.com/Keno/openbmc-linux/commit/2443d1129e95943da1ba86768934489dca548321.patch
 +/dts-v1/;
 +
 +#include "aspeed-g4.dtsi"
@@ -173,6 +177,6 @@ index 000000000000..3242927a02e3
 +&wdt2 {
 +	status = "okay";
 +};
--- 
-2.40.1
+--
+2.49.0
 
