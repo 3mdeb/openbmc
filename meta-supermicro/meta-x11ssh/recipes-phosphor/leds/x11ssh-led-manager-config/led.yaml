@@ -3,17 +3,21 @@ BmcBooted:
         Action: 'Blink'
         DutyOn: 50
         Period: 0
+        Priority: 'Blink'
 EnclosureIdentify:
     uid:
         Action: 'Blink'
         DutyOn: 50
         Period: 1000
+        Priority: 'Blink'
 LampTest:
     heartbeat:
         Action: 'Blink'
         DutyOn: 50
         Period: 1000
+        Priority: 'Blink'
     uid:
         Action: 'Blink'
         DutyOn: 50
         Period: 1000
+        Priority: 'Blink'
