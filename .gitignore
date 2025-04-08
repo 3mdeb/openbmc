@@ -3,3 +3,4 @@ customrc
 *.sw?
 .repo/
 .vscode/
+images/
