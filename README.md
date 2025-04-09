@@ -1,3 +1,7 @@
+# Prerequisites
+
+The documents related to `x11ssh` platform, are in `./docs/` directory.
+
 # OpenBMC
 
 [![Build Status](https://jenkins.openbmc.org/buildStatus/icon?job=latest-master)](https://jenkins.openbmc.org/job/latest-master/)
