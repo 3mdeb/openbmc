@@ -1,0 +1,67 @@
+From e7b419ac3256d70effe1d7d638f31856730133a4 Mon Sep 17 00:00:00 2001
+From: Mateusz Kusiak <mateusz.kusiak@3mdeb.com>
+Date: Tue, 29 Apr 2025 16:04:18 +0200
+Subject: [PATCH] supermicro-x11ssh: serial routing for BMC on COM2
+
+This commit enables serial routing, so BMC can output to serial.
+The commit is heavily based on:
+https://github.com/osresearch/u-bmc/commit/8b7d1ae02a33bbfda7487b6a2162a3317a355f00
+
+Upstream-Status: Inappropriate [testing]
+Signed-off-by: Mateusz Kusiak <mateusz.kusiak@3mdeb.com>
+---
+ arch/arm/mach-aspeed/platform_g4.S | 38 +++++++++++++++++++++++++++++-
+ 1 file changed, 37 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/mach-aspeed/platform_g4.S b/arch/arm/mach-aspeed/platform_g4.S
+index 0cdbdbfccf0e..9e61bdf482b4 100644
+--- a/arch/arm/mach-aspeed/platform_g4.S
++++ b/arch/arm/mach-aspeed/platform_g4.S
+@@ -342,7 +342,43 @@ set_MPLL:
+     and r1, r2, r1
+     str r1, [r0]
+ 
+-/* Debug - UART console message */
++/* Debug - UART console message on the serial port */
++#define CONFIG_DRAM_UART_TO_UART2
++#ifdef CONFIG_DRAM_UART_TO_UART1
++    // route the BMC debug uart5 to the COM1 DB9 on the backplane
++    ldr   r0, =0x1e78909c                        @ route UART5 to UART Port1, 2016.08.29
++    ldr   r1, =0x10000004
++    str   r1, [r0]
++    ldr   r0, =0x1e6e2084
++    ldr   r1, [r0]
++    mov   r2, #0xC0                              @ Enable pinmux of TXD1/RXD1
++    orr   r1, r1, r2, lsl #16
++    str   r1, [r0]
++#endif
++#ifdef CONFIG_DRAM_UART_TO_UART2
++    // route the BMC debug uart5 to the COM2 header on the mainboard
++    // and enable the /dev/ttyS0 serial output from the x86 (BMC IO1?) on the DB9 (UART1?)
++    ldr   r0, =0x1e78909c // LPC Host Interface Control Register A (HICRA) p564
++    ldr   r1, =( 0 \
++	| (0x2 << 28)	/* Route IO2 to UART5 (sel5DW) */ \
++	| (0x3 <<  3)	/* Route UART5 to IO2 (sel2IO) */ \
++	| (0x0 << 16)	/* Route IO1 to UART1 (sel1DW) */ \
++	| (0x0 <<  0)	/* Route UART1 to IO1 (sel1IO) */ \
++	)
++    str   r1, [r0]
++
++    ldr   r0, =0x1e6e2084 // System Control Unit Multi-function pin control #2 (SCU84) p345
++    ldr   r1, [r0]
++    ldr   r2, =(0 \
++	| (1 << 31) /* Enable UART2 RXD1 */ \
++	| (1 << 30) /* Enable UART2 TXD1 */ \
++	| (1 << 23) /* Enable UART1 RXD1 */ \
++	| (1 << 22) /* Enable UART1 TXD1 */ \
++	)
++    orr   r1, r1, r2, lsl #0
++    str   r1, [r0]
++#endif
++
+     ldr r0, =0x1e78400c
+     mov r1, #0x83
+     str r1, [r0]
+-- 
+2.49.0
+
