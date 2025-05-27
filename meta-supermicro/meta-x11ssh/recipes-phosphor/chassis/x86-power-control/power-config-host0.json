@@ -1,0 +1,34 @@
+{
+  "gpio_configs": [
+    {
+      "Name" : "PowerButton",
+      "LineName" : "POWER_BTN_N",
+      "Type" : "GPIO",
+      "Polarity" : "ActiveLow"
+    },
+    {
+      "Name" : "ResetButton",
+      "LineName" : "RESET_BTN_N",
+      "Type" : "GPIO",
+      "Polarity" : "ActiveLow"
+    },
+    {
+      "Name" : "BiosMux",
+      "LineName" : "BIOS_MUX_N",
+      "Type" : "GPIO",
+      "Polarity" : "ActiveLow"
+    },
+    {
+      "Name" : "PowerLed",
+      "LineName" : "POWER_LED_N",
+      "Type" : "GPIO",
+      "Polarity" : "ActiveLow"
+    },
+    {
+      "Name" : "UIDLed",
+      "LineName" : "UID_LED_N",
+      "Type" : "GPIO",
+      "Polarity" : "ActiveLow"
+    }
+  ]
+}

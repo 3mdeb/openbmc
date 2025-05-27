@@ -1,0 +1,60 @@
+From 5b2b854d6ffe8c711b50cf4838d4f48c38f96a7b Mon Sep 17 00:00:00 2001
+From: Mateusz Kusiak <mateusz.kusiak@3mdeb.com>
+Date: Mon, 25 Aug 2025 11:33:38 +0200
+Subject: [PATCH] g4: Add kcs definitions in dts
+
+Add kcs interface definitions for aspeed g4 BMCs (ast2400).
+
+Upstream-Status: Inappropriate [testing]
+Signed-off-by: Mateusz Kusiak <mateusz.kusiak@3mdeb.com>
+---
+ arch/arm/boot/dts/aspeed/aspeed-g4.dtsi | 28 +++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed/aspeed-g4.dtsi b/arch/arm/boot/dts/aspeed/aspeed-g4.dtsi
+index 7b1982c116f1..758530a1dfaf 100644
+--- a/arch/arm/boot/dts/aspeed/aspeed-g4.dtsi
++++ b/arch/arm/boot/dts/aspeed/aspeed-g4.dtsi
+@@ -373,6 +373,34 @@ lpc: lpc@1e789000 {
+ 				#size-cells = <1>;
+ 				ranges = <0x0 0x1e789000 0x1000>;
+
++				// When enabled, get's created on boot.
++				// When used under service, the service does not fail, no info in webui.
++				kcs1: kcs@24 {
++					compatible = "aspeed,ast2400-kcs-bmc-v2";
++					reg = <0x24 0x1>, <0x30 0x1>, <0x3c 0x1>;
++					interrupts = <8>;
++					clocks = <&syscon ASPEED_CLK_GATE_LCLK>;
++					aspeed,lpc-io-reg = <0xca2>;
++					status = "enabled";
++				};
++
++				// When enabled, get's created on boot.
++				// When used under service, the service does not fail, no info in webui.
++				kcs2: kcs@28 {
++					compatible = "aspeed,ast2400-kcs-bmc-v2";
++					reg = <0x28 0x1>, <0x34 0x1>, <0x40 0x1>;
++					interrupts = <8>;
++					clocks = <&syscon ASPEED_CLK_GATE_LCLK>;
++					aspeed,lpc-io-reg = <0xca2>;
++					status = "disabled";
++				};
++
++				// When enabled, doesn't get created on boot.
++				kcs3: kcs@2c {
++					compatible = "aspeed,ast2400-kcs-bmc-v2";
++					reg = <0x2c 0x1>, <0x38 0x1>, <0x44 0x1>;
++					interrupts = <8>;
++					clocks = <&syscon ASPEED_CLK_GATE_LCLK>;
++					aspeed,lpc-io-reg = <0xca2>;
++					status = "enabled";
++				};
++
++
+ 				lpc_ctrl: lpc-ctrl@80 {
+ 					compatible = "aspeed,ast2400-lpc-ctrl";
+ 					reg = <0x80 0x10>;
+--
+2.50.1
+

@@ -172,3 +172,18 @@ Erasing and writing flash chip... Erase/write done.
 Verifying flash... VERIFIED.
 
 ```
+
+## User accounts
+
+The root with `0penBmc` password is created by default. It can be used
+to log in via serial.
+
+To make root be able to access WebUI, the necessary privileges need to be
+assigned. Execute following command on serial to assign the root user necessary
+privileges to be able to access webui.
+
+```bash
+busctl set-property xyz.openbmc_project.User.Manager \
+/xyz/openbmc_project/user/root \
+xyz.openbmc_project.User.Attributes UserPrivilege s 'priv-admin'
+```
