@@ -1,0 +1,33 @@
+From 3e6ee0b9b940d5005a65a47d8794dbacffcfdea4 Mon Sep 17 00:00:00 2001
+From: Mateusz Kusiak <mateusz.kusiak@3mdeb.com>
+Date: Wed, 9 Apr 2025 11:36:33 +0200
+Subject: [PATCH] bmcweb.service: Fix WatchdogSec
+
+The issue here is that the variable that's being referenced for
+WatchdogSec is actualy named "WATCHDOG_TIMEOUT_SECONDS".
+
+The issue for this has been submitted:
+https://github.com/openbmc/bmcweb/issues/306
+
+Upstream-Status: Inappropriate [testing]
+Signed-off-by: Mateusz Kusiak <mateusz.kusiak@3mdeb.com>
+---
+ config/bmcweb.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/bmcweb.service.in b/config/bmcweb.service.in
+index 78a92fea4ced..038b46d9d1c3 100644
+--- a/config/bmcweb.service.in
++++ b/config/bmcweb.service.in
+@@ -10,7 +10,7 @@ ExecStart=@MESON_INSTALL_PREFIX@/libexec/bmcwebd
+ Type=simple
+ WorkingDirectory=/home/root
+ SyslogLevelPrefix=true
+-WatchdogSec=@WATCHDOG_TIMEOUT@s
++WatchdogSec=@WATCHDOG_TIMEOUT_SECONDS@s
+
+ [Install]
+ WantedBy=network.target
+--
+2.49.0
+

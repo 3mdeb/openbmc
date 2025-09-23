@@ -1,0 +1,41 @@
+{
+    "gpio_configs": {
+
+        "power_config": {
+            "power_up_outs": [
+                {"name": "POWER_BTN_N", "polarity": false}
+            ],
+            "reset_outs": [
+                {"name": "RESET_BTN_N", "polarity": false}
+            ]
+        }
+    },
+
+    "gpio_definitions": [
+        {
+            "name": "POWER_BTN_N",
+            "pin": "C1",
+            "direction": "both"
+        },
+        {
+            "name": "RESET_BTN_N",
+            "pin": "E2",
+            "direction": "both"
+        },
+        {
+            "name": "BIOS_MUX_N",
+            "pin": "E4",
+            "direction": "out"
+        },
+        {
+            "name": "POWER_LED_N",
+            "pin": "D6",
+            "direction": "out"
+        },
+        {
+            "name": "UID_LED_N",
+            "pin": "D7",
+            "direction": "out"
+        }
+    ]
+}
